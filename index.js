@@ -22,6 +22,8 @@ console.log(_.drop([1, 2, 3],2));
 
 console.log(_.join(['a', 'b', 'c'], '~'));
 
+console.log(_.slice([1,2,3,4,5], 2, 4 )); //2 inclusive ,,4 exclusive
+
 
 
 
