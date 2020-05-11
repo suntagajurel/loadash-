@@ -65,7 +65,7 @@ let data = {
   
   let competitions = Object.values(data.competitions.byId)
 
-  liveStatus (competition) ;
+  
   
   // _.chain(arr) keeps returning `lodash` objects
   // so I don't have to call it separately for every action
@@ -76,13 +76,23 @@ let data = {
     
   console.log(filteredCompetitions)
 
-  liveStatus= (data) => {
-  let reduceData = _.reduce(data, (result, value, key)=> {
-    (result[value.name] = []).push(value.status.is_live);
-    return result;
-  }, {});
-  console.log(reduceData);
-  }
-  
+  // liveStatus = (data) => {
+  // let reduceData = _.reduce(data, (result, value, key)=> {
+  //   (result[value.name] = []).push(value.status.is_live);
+  //   return result;
+  // }, {});
+  // console.log(reduceData);
+  // }
+  // liveStatus(competitions) ;
 
+  console.log("after chaining")
+
+normaliseObject = (prop) => {
+
+ var sth = _.chain(competitions).keyBy(prop).mapValues(i=> _.omit(i,prop)).value();
+ console.log(sth);
+ return sth 
+  }
+ 
+console.log(normaliseObject ('name'));
   
